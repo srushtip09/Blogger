@@ -1,0 +1,34 @@
+<% layout('layouts/boilerplate')%>
+<div class="text-center"><h1><b>Edit blog</b></h1></div>
+    <div class="col-6 offset-3">
+        <form action="/bloggrounds/<%=blog.id%>?_method=PATCH" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" id="title" value="<%=blog.title%>">
+            </div>
+            <!-- <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" name="location" class="form-control" id="location" value="<%=blog.location%>">
+            </div>
+            <div class=" mb-3">
+                <label for="price" class="form-label">Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-lable">$</span>
+                    <input type="number" id="price" name="price" value="<%=blog.price%>" class="form-control"aria-label="" aria-describedby="price-lable">
+                </div>  
+              </div> -->
+              <div class="mb-3">
+                <label for="image" class="form-label">Image Url</label>
+                <input type="string" class="form-control" value="<%= blog.image %>" name="image" id="image">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="description" class="form-control" id="description" cols="30" rows="3"><%=blog.description%></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-info">Update</button>
+            </div>
+        </form>
+        <a href="/bloggrounds">Back to Index</a>
+    </div>
+

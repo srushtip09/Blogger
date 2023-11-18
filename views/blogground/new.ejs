@@ -1,0 +1,35 @@
+<% layout('layouts/boilerplate')%>
+    <div class="text-center"><h1><b>Create New Blog</b></h1></div>
+    <div class="col-6 offset-3">
+        <form action="/bloggrounds" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" id="title">
+            </div>
+            <!-- <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" name="location" id="location">
+            </div>
+            <div class=" mb-3">
+                <label for="price" class="form-label">Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-lable">$</span>
+                    <input type="number" id="price" name="price" class="form-control" placeholder="0" aria-label="" aria-describedby="price-lable">
+                </div>  
+              </div> -->
+            <div class="mb-3">
+                <label for="image" class="form-label">Image Url</label>
+                <input type="string" class="form-control" name="image" id="image">
+            </div>
+            <div class="mb-3" class="form-label">
+                <label for="description">Description</label>
+                <textarea class="form-control" name="description" id="description" cols="30" rows="20"></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success">Submit</button>
+            </div>
+        </form>
+        <a href="/bloggrounds">Back to Index</a>  
+    </div>
+    
+    

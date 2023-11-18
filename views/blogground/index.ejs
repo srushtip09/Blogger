@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate')%>
+    <h1>All Blogs</h1>
+    <a href="/bloggrounds/new">Create New Blog</a>
+    <ul>
+        <% for(let blog of blogs) {%>
+            <div class="card" mb-3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="<%=blog.image%>" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><%=blog.title%></h5>
+                            <p class="card-text"><%=blog.description%></p>
+                            <a href = "/bloggrounds/show/<%=blog.id%>" class="btn btn-primary">View <%=blog.title%></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+    </ul>
+

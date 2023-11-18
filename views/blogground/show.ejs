@@ -1,0 +1,74 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <div class="col-6">
+        <div class="card" style="width:500px;height:auto;">
+            <div class="card-title">
+                <div class="text-center"><h1><b><%=blog.title%></b></h1></div>
+            </div>
+            <div class="card-body">
+                <img style="width:500px;height:500px;" src="<%=blog.image%>" class="img-fluid"></img>
+                <div class="mb-2 mt-2">
+                    <input disabled type="text" name="title" class="form-control" id="title" value="By-<%=blog.author.username%>">
+                </div>
+                <!-- <div class="mb-2 mt-2">
+                    <input disabled type="text" name="location" class="form-control" id="location" value="<%=blog.location%>">
+                </div>
+                <div class=" mb-2">
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-lable">$</span>
+                        <input disabled type="number" id="price" name="price" value="<%=blog.price%>" class="form-control"aria-label="" aria-describedby="price-lable">
+                    </div>  
+                </div> -->
+                <div class="mb-3" class="form-label">
+                    <textarea disabled class="form-control" name="description" id="description" cols="30" rows="10"><%=blog.description%></textarea>
+                </div>
+                <%if(currentUser && blog.author.equals(currentUser)){%>
+                <a href="/bloggrounds/edit/<%=blog.id%>"><button class="btn btn-primary">EDIT</button></a>
+                <a href="/bloggrounds/delete/<%=blog.id%>"><button class="btn btn-danger">DELETE</button></a>
+                <%}%>
+            </div>
+        </div>
+        <a href="/bloggrounds">Back to Index</a> 
+    </div>
+
+ 
+    
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h3>Reviews</h3>
+
+                        <%for(review of reviews){%>
+                            <ul>
+                                <div class="card">
+                                <h4><%=review.rating%></h4>
+                                <p><%=review.body%><p>
+                                <p>By-<%=review.owner.username%></p>
+                                <%if(currentUser && (review.owner.equals(currentUser)|| blog.author.equals(currentUser))){%>
+                                <form action="/bloggrounds/<%=blog.id%>/reviews/<%=review.id%>?_method=DELETE" method="POST">
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
+                                <%}%>
+                                </div>
+                            </ul>
+                        <% } %>
+
+                <h2>Leave a Review</h2>
+                <form action="/bloggrounds/reviews/<%=blog.id%>" method="POST">
+                    <div class="mb-3" class="form-label">
+                        <label for="rating" class="form-label">Rating</label>
+                        <input type="range"class="form-range" name="rating" id="rating" min="1" max="5"></input>
+                    </div>
+                    <div class="mb-3" class="form-label">
+                        <label for="body" class="form-label">Add a Review</label>
+                        <textarea class="form-control" name="body" id="body" cols="30" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-info">Post Review</button>
+                    </div> 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    

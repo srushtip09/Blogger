@@ -1,0 +1,5 @@
+<% layout('layouts/boilerplate')%>
+    <form action="/bloggrounds/<%=blog.id%>?_method=DELETE" method="POST">
+        <button>Delete</button>
+    </form>
+    <a href="/bloggrounds/show/<%=blog.id%>">cancle</a>
